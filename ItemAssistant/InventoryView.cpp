@@ -145,7 +145,7 @@ LRESULT InventoryView::OnColumnClick(LPNMHDR lParam)
         m_sortDesc = !m_sortDesc;
     }
 
-    ItemListDataModelPtr data_model = boost::shared_static_cast<ItemListDataModel>(m_datagrid->getModel());
+    ItemListDataModelPtr data_model = boost::static_pointer_cast<ItemListDataModel>(m_datagrid->getModel());
     data_model->sortData(m_sortColumn, !m_sortDesc);
 
     return 0;
@@ -302,7 +302,7 @@ LRESULT InventoryView::OnCopyItemRef(WORD FromAccelerator, WORD CommandId, HWND 
 
     boost::replace_all(itemTemplate, _T("%url%"), urlTemplate);
 
-    ItemListDataModelPtr model = boost::shared_static_cast<ItemListDataModel>(m_datagrid->getModel());
+    ItemListDataModelPtr model = boost::static_pointer_cast<ItemListDataModel>(m_datagrid->getModel());
 
     g_DBManager.Lock();
     std::tstring output = prefix;
@@ -340,7 +340,7 @@ LRESULT InventoryView::OnCopyItemRef(WORD FromAccelerator, WORD CommandId, HWND 
     {
         if (output.length() <= 4096)
         {
-            std::tstring filename = STREAM2STR(AOManager::instance().getAOFolder() << _T("\\scripts\\aoia"));
+            std::tstring filename = STREAM2STR(AOManager::instance().getAOPrefsFolder() << _T("\\..\\scripts\\aoia"));
 #ifdef UNICODE
             std::wofstream ofs(filename.c_str());
 #else
@@ -376,7 +376,7 @@ LRESULT InventoryView::OnShowItemRef(WORD FromAccelerator, WORD CommandId, HWND 
     }
 
     int activeItemIdx = *(m_datagrid->getSelectedItems().begin());
-    ItemListDataModelPtr model = boost::shared_static_cast<ItemListDataModel>(m_datagrid->getModel());
+    ItemListDataModelPtr model = boost::static_pointer_cast<ItemListDataModel>(m_datagrid->getModel());
     unsigned int ownedItemIndex = model->getItemIndex(activeItemIdx);
 
     g_DBManager.Lock();
@@ -2674,7 +2674,7 @@ void InventoryView::OnSelectionChanged()
 
     if (items.size() == 1)
     {
-        ItemListDataModelPtr model = boost::shared_static_cast<ItemListDataModel>(m_datagrid->getModel());
+        ItemListDataModelPtr model = boost::static_pointer_cast<ItemListDataModel>(m_datagrid->getModel());
         m_infoview.SetCurrentItem(model->getItemIndex(*items.begin()));
     }
     else

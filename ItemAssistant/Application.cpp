@@ -32,6 +32,7 @@ bool Application::init(std::tstring const& cmdLine)
     Logger::instance().init(logfile, g_versionNumber);
 
     LOG(_T("Using AO Folder at: ") << AOManager::instance().getAOFolder());
+    LOG(_T("Using Prefs Folder at: ") << AOManager::instance().getAOPrefsFolder());
 
     std::tstring dbfile;
     std::tstring::size_type argPos = cmdLine.find(_T("-db"));

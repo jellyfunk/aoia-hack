@@ -113,8 +113,8 @@ std::vector<PsmTreeViewItem*> AccountTreeViewItem::GetChildren() const
 {
     std::vector<PsmTreeViewItem*> result;
 
-    path accountPath(AOManager::instance().getAOFolder(), boost::filesystem::native);
-    accountPath = accountPath / _T("Prefs") / m_label;
+    path accountPath(AOManager::instance().getAOPrefsFolder(), boost::filesystem::native);
+    accountPath = accountPath / m_label;
 
     directory_iterator character(accountPath), filesEnd;
     for (; character != filesEnd; ++character)
@@ -190,7 +190,7 @@ void CharacterTreeViewItem1::OnSelected()
 std::vector<std::tstring> CharacterTreeViewItem1::GetAllSoldItems()
 {
     std::tstring filename;
-    filename = STREAM2STR( AOManager::instance().getAOFolder() << _T("\\Prefs\\") << m_pParent->GetLabel() << "\\Char" << m_charid << "\\PlayerShopLog.html");
+    filename = STREAM2STR( AOManager::instance().getAOPrefsFolder() << _T("\\") << m_pParent->GetLabel() << "\\Char" << m_charid << "\\PlayerShopLog.html");
 
     boost::filesystem::path p(to_utf8_copy(filename),boost::filesystem::native);
 
@@ -343,7 +343,7 @@ std::vector<PsmTreeViewItem*> PlayershopTreeRoot::GetChildren() const
     std::vector<PsmTreeViewItem*> result;
 
     std::tstring filename;
-    filename = STREAM2STR( AOManager::instance().getAOFolder() << _T("\\Prefs") );
+    filename = STREAM2STR( AOManager::instance().getAOPrefsFolder() );
     if(filename.empty()) {
         return result;
     }

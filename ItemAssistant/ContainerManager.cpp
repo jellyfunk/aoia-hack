@@ -49,7 +49,7 @@ std::tstring ContainerManager::GetContainerName(unsigned int charid, unsigned in
     std::tstring filename;
     for (unsigned int i = 0; i < m_accounts.size(); i++)
     {
-        filename = STREAM2STR( AOManager::instance().getAOFolder() << _T("\\Prefs\\") << m_accounts[i] << _T("\\Char") << charid << _T("\\Containers\\Container_51017x") << containerid << _T(".xml") );
+        filename = STREAM2STR( AOManager::instance().getAOPrefsFolder() << _T("\\") << m_accounts[i] << _T("\\Char") << charid << _T("\\Containers\\Container_51017x") << containerid << _T(".xml") );
         if (PathFileExists(filename.c_str()))
         {
             WIN32_FILE_ATTRIBUTE_DATA atribs; 
@@ -277,8 +277,8 @@ std::vector<std::tstring> ContainerManager::GetAccountNames() const
 {
     std::vector<std::tstring> result;
 
-    std::tstring path = AOManager::instance().getAOFolder();
-    path += _T("\\Prefs\\*");
+    std::tstring path = AOManager::instance().getAOPrefsFolder();
+    path += _T("\\*");
 
     WIN32_FIND_DATA findData;
 

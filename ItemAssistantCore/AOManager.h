@@ -21,10 +21,12 @@ public:
 
     void SettingsManager(aoia::ISettingsPtr settings);
     std::tstring getAOFolder() const;
+	std::tstring getAOPrefsFolder() const;
     std::vector<std::tstring> getAccountNames() const;
 
 private:
     mutable std::tstring m_aofolder;
+    mutable std::tstring m_prefsfolder;
     aoia::ISettingsPtr m_settings;
 };
 

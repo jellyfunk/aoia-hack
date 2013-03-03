@@ -150,7 +150,7 @@ LRESULT IdentifyView::onColumnClick(LPNMHDR lParam)
         m_sortAscending = !m_sortAscending;
     }
 
-    ItemListDataModelPtr data_model = boost::shared_static_cast<ItemListDataModel>(m_datagrid->getModel());
+    ItemListDataModelPtr data_model = boost::static_pointer_cast<ItemListDataModel>(m_datagrid->getModel());
     data_model->sortData(m_sortColumn, m_sortAscending);
 
     return 0;

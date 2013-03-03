@@ -420,7 +420,7 @@ WatchDirectoryThread::~WatchDirectoryThread()
 
 DWORD WatchDirectoryThread::ThreadProc()
 {
-    std::tstring directoryToWatch = STREAM2STR(AOManager::instance().getAOFolder() << _T("\\Prefs"));
+    std::tstring directoryToWatch = STREAM2STR(AOManager::instance().getAOPrefsFolder());
     WatchDirectory((LPTSTR)directoryToWatch.c_str());
     return 0;
 }
