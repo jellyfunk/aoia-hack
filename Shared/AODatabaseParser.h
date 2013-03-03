@@ -7,6 +7,9 @@
 #include <shared/AODB.h>
 #include <string>
 
+#if (_MSC_VER >= 1500 && _MSC_VER < 1600)
+using boost::uintmax_t;
+#endif
 
 class AODatabaseParser
 {

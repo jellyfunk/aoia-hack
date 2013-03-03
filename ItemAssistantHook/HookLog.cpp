@@ -11,7 +11,7 @@ HookLog::HookLog()
     std::string tmpfile(tmpfolder);
     tmpfile += "aoia_hook.log";
 
-    m_out.open(tmpfile);
+    m_out.open(tmpfile.c_str());
 
     if (m_out.is_open())
     {
