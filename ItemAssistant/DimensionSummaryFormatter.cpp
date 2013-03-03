@@ -20,7 +20,6 @@ namespace aoia
             int totalAiLevels = 0;
 
             out.imbue(std::locale(""));
-            out << "<h2>" << m_dimensionName << "</h2>";
             out << "<table id=\"summarytbl\"><tr>";
 
             for (unsigned int j = 0; j < m_model->getColumnCount(); ++j)

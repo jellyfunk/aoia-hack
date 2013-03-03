@@ -744,9 +744,9 @@ void DBManager::updateDBVersion(unsigned int fromVersion) const
             m_db->Exec(_T("INSERT INTO tItems (itemidx, keylow, keyhigh, ql, stack, parent, slot, children, owner) SELECT itemidx, keylow, keyhigh, ql, stack, parent, slot, children, owner FROM tItems2"));
             m_db->Exec(_T("DROP TABLE tItems2"));
             m_db->Exec(_T("CREATE TABLE tDimensions (dimensionid INTEGER NOT NULL PRIMARY KEY UNIQUE, dimensionname VARCHAR)"));
-            m_db->Exec(_T("INSERT INTO tDimensions (dimensionid, dimensionname) VALUES (11, 'Atlantean (Rubi-Ka 1)')"));
-            m_db->Exec(_T("INSERT INTO tDimensions (dimensionid, dimensionname) VALUES (12, 'Rimor (Rubi-Ka 2)')"));
-            m_db->Exec(_T("INSERT INTO tDimensions (dimensionid, dimensionname) VALUES (13, 'Die Neue Welt (German Server)')"));
+            //m_db->Exec(_T("INSERT INTO tDimensions (dimensionid, dimensionname) VALUES (11, 'Atlantean (Rubi-Ka 1)')"));
+            //m_db->Exec(_T("INSERT INTO tDimensions (dimensionid, dimensionname) VALUES (12, 'Rimor (Rubi-Ka 2)')"));
+            m_db->Exec(_T("INSERT INTO tDimensions (dimensionid, dimensionname) VALUES (13, 'Rubi-Ka')"));
             m_db->Exec(_T("CREATE TABLE tToons2 (charid INTEGER NOT NULL PRIMARY KEY UNIQUE, charname VARCHAR, shopid INTEGER DEFAULT '0', dimensionid INTEGER DEFAULT '0')"));
             m_db->Exec(_T("INSERT INTO tToons2 (charid, charname, shopid) SELECT charid, charname, shopid FROM tToons"));
             m_db->Exec(_T("DROP TABLE tToons"));
@@ -807,9 +807,9 @@ void DBManager::createDBScheme() const
     m_db->Exec("CREATE TABLE tToons (charid INTEGER NOT NULL PRIMARY KEY UNIQUE, charname VARCHAR, shopid INTEGER DEFAULT '0', dimensionid INTEGER DEFAULT '0')");
     m_db->Exec("CREATE UNIQUE INDEX iCharId ON tToons (charid)");
     m_db->Exec("CREATE TABLE tDimensions (dimensionid INTEGER NOT NULL PRIMARY KEY UNIQUE, dimensionname VARCHAR)");
-    m_db->Exec("INSERT INTO tDimensions (dimensionid, dimensionname) VALUES (11, 'Atlantean (Rubi-Ka 1)')");
-    m_db->Exec("INSERT INTO tDimensions (dimensionid, dimensionname) VALUES (12, 'Rimor (Rubi-Ka 2)')");
-    m_db->Exec("INSERT INTO tDimensions (dimensionid, dimensionname) VALUES (13, 'Die Neue Welt (German Server)')");
+    //m_db->Exec("INSERT INTO tDimensions (dimensionid, dimensionname) VALUES (11, 'Atlantean (Rubi-Ka 1)')");
+    //m_db->Exec("INSERT INTO tDimensions (dimensionid, dimensionname) VALUES (12, 'Rimor (Rubi-Ka 2)')");
+    m_db->Exec("INSERT INTO tDimensions (dimensionid, dimensionname) VALUES (13, 'Rubi-Ka')");
     m_db->Exec("CREATE TABLE tToonStats (charid INTEGER NOT NULL, statid INTEGER NOT NULL, statvalue INTEGER NOT NULL, FOREIGN KEY (charid) REFERENCES tToons (charid))");
     m_db->Exec("CREATE UNIQUE INDEX charstatindex ON tToonStats (charid ASC, statid ASC)");
     m_db->Exec(STREAM2STR(_T("CREATE VIEW vSchemeVersion AS SELECT '") << CURRENT_DB_VERSION << _T("' AS Version")));

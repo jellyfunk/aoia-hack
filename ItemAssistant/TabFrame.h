@@ -50,7 +50,7 @@ private:
     AoMsgView           m_msgView;
 #endif
     PatternMatchView    m_patternView;
-    PlayershopView      m_playershopView;
+    //PlayershopView      m_playershopView;
     IdentifyView        m_identifyView;
     aoia::sv::SummaryView m_summaryView;
 

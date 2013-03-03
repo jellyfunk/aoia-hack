@@ -18,8 +18,10 @@
 // Neutral resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_NEU)
+#ifdef _WIN32
 LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
 #pragma code_page(1252)
+#endif //_WIN32
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -76,7 +78,7 @@ IDB_PLAYERSHOP_VIEW     BITMAP                  "res\\PlayerShopMonitor.bmp"
 // Menu
 //
 
-IDR_ITEM_POPUP_MULTISEL MENU
+IDR_ITEM_POPUP_MULTISEL MENU 
 BEGIN
     POPUP "Item Context Menu"
     BEGIN
@@ -111,11 +113,13 @@ END
 
 
 /////////////////////////////////////////////////////////////////////////////
-// English (United States) resources
+// English (U.S.) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
 LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 #pragma code_page(1252)
+#endif //_WIN32
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -129,7 +133,7 @@ IDR_MAINFRAME           BITMAP                  "res\\mainfram.bmp"
 // Menu
 //
 
-IDR_MAINFRAME MENU
+IDR_MAINFRAME MENU 
 BEGIN
     POPUP "&File"
     BEGIN
@@ -157,7 +161,7 @@ BEGIN
     END
 END
 
-IDR_ITEM_POPUP MENU
+IDR_ITEM_POPUP MENU 
 BEGIN
     POPUP "Item Context Menu"
     BEGIN
@@ -194,7 +198,7 @@ BEGIN
     END
 END
 
-IDR_TRAY_POPUP MENU
+IDR_TRAY_POPUP MENU 
 BEGIN
     POPUP "Show / Hide"
     BEGIN
@@ -219,7 +223,7 @@ IDR_HTML2               HTML                    "res\\html2.htm"
 // Toolbar
 //
 
-IDR_MAINFRAME TOOLBAR 16, 16
+IDR_MAINFRAME TOOLBAR  16, 16
 BEGIN
     BUTTON      ID_FILE_NEW
     BUTTON      ID_FILE_OPEN
@@ -241,7 +245,7 @@ END
 // Accelerator
 //
 
-IDR_MAINFRAME ACCELERATORS
+IDR_MAINFRAME ACCELERATORS 
 BEGIN
     VK_DELETE,      ID_EDIT_CLEAR,          VIRTKEY, NOINVERT
     VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
@@ -252,14 +256,14 @@ BEGIN
     VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT, NOINVERT
 END
 
-IDR_INV_ACCEL ACCELERATORS
+IDR_INV_ACCEL ACCELERATORS 
 BEGIN
     "F",            ID_INV_FIND,            VIRTKEY, CONTROL, NOINVERT
     VK_ESCAPE,      ID_INV_FIND_HIDE,       VIRTKEY, NOINVERT
     "I",            ID_INFO,                VIRTKEY, CONTROL, NOINVERT
 END
 
-IDR_PB_ACCEL ACCELERATORS
+IDR_PB_ACCEL ACCELERATORS 
 BEGIN
     "F",            ID_PB_FILTER,           VIRTKEY, CONTROL, NOINVERT
     VK_ESCAPE,      ID_PB_FILTER_HIDE,      VIRTKEY, NOINVERT
@@ -340,21 +344,19 @@ BEGIN
     LTEXT           "Dimension",IDC_STATIC_DIMENSION,210,5,33,8
 END
 
-IDD_PATTERN_MATCHER DIALOGEX 0, 0, 134, 140
+IDD_PATTERN_MATCHER DIALOGEX 0, 0, 134, 101
 STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_VISIBLE
 FONT 8, "MS Shell Dlg", 400, 0, 0x1
 BEGIN
-    LTEXT           "Character",IDC_STATIC,6,42,37,12,SS_CENTERIMAGE
-    COMBOBOX        IDC_CHARCOMBO,48,42,82,74,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
-    CONTROL         "Show All",IDC_SHOW_ALL,"Button",BS_AUTORADIOBUTTON,18,72,43,10
-    CONTROL         "Show Completable",IDC_COMPLETABLE,"Button",BS_AUTORADIOBUTTON,18,96,75,10
-    CONTROL         "Show Partials",IDC_SHOW_PARTIALS,"Button",BS_AUTORADIOBUTTON,18,84,59,10
-    GROUPBOX        "Pattern Pieces",IDC_STATIC,6,60,120,60
-    CONTROL         "",IDC_PROGRESS,"msctls_progress32",PBS_SMOOTH,6,126,120,12
-    LTEXT           "Filter Settings:",IDC_STATIC,7,7,48,8
-    CONTROL         "Exclude ABCD Assemblies",IDC_EXCLUDE_ASSEMBLED,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,18,108,93,10
-    LTEXT           "Dimension",IDC_STATIC,6,24,37,12,SS_CENTERIMAGE
-    COMBOBOX        IDC_DIMENSION_COMBO,48,24,82,74,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Character",IDC_STATIC,6,2,37,12,SS_CENTERIMAGE
+    COMBOBOX        IDC_CHARCOMBO,48,2,82,74,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "Show All",IDC_SHOW_ALL,"Button",BS_AUTORADIOBUTTON,18,33,43,10
+    CONTROL         "Show Completable",IDC_COMPLETABLE,"Button",BS_AUTORADIOBUTTON,18,57,75,10
+    CONTROL         "Show Partials",IDC_SHOW_PARTIALS,"Button",BS_AUTORADIOBUTTON,18,45,59,10
+    GROUPBOX        "Pattern Pieces",IDC_STATIC,6,21,120,60
+    CONTROL         "",IDC_PROGRESS,"msctls_progress32",PBS_SMOOTH,6,84,120,12
+    CONTROL         "Exclude ABCD Assemblies",IDC_EXCLUDE_ASSEMBLED,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,18,69,93,10
+    COMBOBOX        IDC_DIMENSION_COMBO,51,2,82,74,CBS_DROPDOWNLIST | NOT WS_VISIBLE | WS_VSCROLL | WS_TABSTOP
 END
 
 IDD_ITEM_INFO DIALOGEX 0, 0, 170, 99
@@ -389,7 +391,7 @@ END
 //
 
 #ifdef APSTUDIO_INVOKED
-GUIDELINES DESIGNINFO
+GUIDELINES DESIGNINFO 
 BEGIN
     IDD_PLAYERSHOP, DIALOG
     BEGIN
@@ -406,7 +408,7 @@ BEGIN
 
     IDD_PATTERN_MATCHER, DIALOG
     BEGIN
-        BOTTOMMARGIN, 130
+        BOTTOMMARGIN, 96
     END
 
     IDD_ITEM_INFO, DIALOG
@@ -467,7 +469,7 @@ END
 // String Table
 //
 
-STRINGTABLE
+STRINGTABLE 
 BEGIN
     IDR_MAINFRAME           "AO Item Assistant"
     IDR_INVENTORY_VIEW      "Inventory"
@@ -477,12 +479,12 @@ BEGIN
     IDS_AO_ITEMREF_URL      "itemref://%lowid%/%hiid%/%ql%"
 END
 
-STRINGTABLE
+STRINGTABLE 
 BEGIN
     IDS_XYPHOS_ITEMREF_URL  "http://www.xyphos.com/aodb.php?id=%lowid%&ql=%ql%"
 END
 
-STRINGTABLE
+STRINGTABLE 
 BEGIN
     ID_FILE_NEW             "Create a new document\nNew"
     ID_FILE_OPEN            "Open an existing document\nOpen"
@@ -495,26 +497,26 @@ BEGIN
     ID_FILE_PRINT_PREVIEW   "Display full pages\nPrint Preview"
 END
 
-STRINGTABLE
+STRINGTABLE 
 BEGIN
     ID_APP_ABOUT            "Display program information, version number and copyright\nAbout"
     ID_APP_EXIT             "Quit the application; prompts to save documents\nExit"
     ID_HELP_INDEX           "Go to the on-line documentation\nGo To On-Line Help"
 END
 
-STRINGTABLE
+STRINGTABLE 
 BEGIN
     ID_NEXT_PANE            "Switch to the next window pane\nNext Pane"
     ID_PREV_PANE            "Switch back to the previous window pane\nPrevious Pane"
 END
 
-STRINGTABLE
+STRINGTABLE 
 BEGIN
     ID_HELP_SUPPORTFORUM    "Go to the on-line support forum\nGo To Support Forum"
     ID_HELP_CHECKFORUPDATES "Check for a newer version of this application\nPerform Update Check On-Line"
 END
 
-STRINGTABLE
+STRINGTABLE 
 BEGIN
     ID_WINDOW_NEW           "Open another window for the active document\nNew Window"
     ID_WINDOW_ARRANGE       "Arrange icons at the bottom of the window\nArrange Icons"
@@ -524,7 +526,7 @@ BEGIN
     ID_WINDOW_SPLIT         "Split the active window into panes\nSplit"
 END
 
-STRINGTABLE
+STRINGTABLE 
 BEGIN
     ID_EDIT_CLEAR           "Erase the selection\nErase"
     ID_EDIT_CLEAR_ALL       "Erase everything\nErase All"
@@ -539,18 +541,18 @@ BEGIN
     ID_EDIT_REDO            "Redo the previously undone action\nRedo"
 END
 
-STRINGTABLE
+STRINGTABLE 
 BEGIN
     ID_INV_FIND             "Find matching items\nFind Items"
 END
 
-STRINGTABLE
+STRINGTABLE 
 BEGIN
     ID_VIEW_TOOLBAR         "Show or hide the toolbar\nToggle ToolBar"
     ID_VIEW_STATUS_BAR      "Show or hide the status bar\nToggle StatusBar"
 END
 
-STRINGTABLE
+STRINGTABLE 
 BEGIN
     ATL_IDS_SCSIZE          "Change the window size"
     ATL_IDS_SCMOVE          "Change the window position"
@@ -561,33 +563,35 @@ BEGIN
     ATL_IDS_SCCLOSE         "Close the active window and prompts to save the documents"
 END
 
-STRINGTABLE
+STRINGTABLE 
 BEGIN
     ATL_IDS_SCRESTORE       "Restore the window to normal size"
     ATL_IDS_SCTASKLIST      "Activate Task List"
     ATL_IDS_MDICHILD        "Activate this window"
 END
 
-STRINGTABLE
+STRINGTABLE 
 BEGIN
     ATL_IDS_IDLEMESSAGE     "Ready"
 END
 
-STRINGTABLE
+STRINGTABLE 
 BEGIN
     ATL_IDS_MRU_FILE        "Open this document"
 END
 
-#endif    // English (United States) resources
+#endif    // English (U.S.) resources
 /////////////////////////////////////////////////////////////////////////////
 
 
 /////////////////////////////////////////////////////////////////////////////
-// Norwegian, Bokmål (Norway) resources
+// Norwegian (Bokmal) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_NOR)
+#ifdef _WIN32
 LANGUAGE LANG_NORWEGIAN, SUBLANG_NORWEGIAN_BOKMAL
 #pragma code_page(1252)
+#endif //_WIN32
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -630,7 +634,7 @@ END
 //
 
 #ifdef APSTUDIO_INVOKED
-GUIDELINES DESIGNINFO
+GUIDELINES DESIGNINFO 
 BEGIN
     IDD_SERVER_SELECTOR, DIALOG
     BEGIN
@@ -642,7 +646,7 @@ BEGIN
 END
 #endif    // APSTUDIO_INVOKED
 
-#endif    // Norwegian, Bokmål (Norway) resources
+#endif    // Norwegian (Bokmal) resources
 /////////////////////////////////////////////////////////////////////////////
 
 

@@ -80,14 +80,14 @@
         />
     </Target>
 
-    <Target Name="package" DependsOnTargets="prepare_build;update_version;update_version_resource;build;package_pdb">
+    <Target Name="package" DependsOnTargets="prepare_build;build;package_pdb">
         <Message Text="Packaging" />
         <ItemGroup>
             <Files Include="Release/ItemAssistant.exe" />
             <Files Include="Release/ItemAssistantCore.dll" />
             <Files Include="Release/ItemAssistantHook.dll" />
             <Files Include="Release/README.txt" />
-            <Files Include="$(VS90COMNTOOLS)..\..\VC\redist\x86\Microsoft.VC100.CRT\*.dll" />
+            <Files Include="$(VS90COMNTOOLS)..\..\VC\redist\x86\Microsoft.VC90.CRT\*.dll" />
         </ItemGroup>
         <Zip
 			Files="@(Files)"
