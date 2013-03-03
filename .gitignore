@@ -25,5 +25,10 @@
 *.pch
 *.exp
 *.sln.cache
-
+*.res
 *.bsc
+
+#AOIA outputs
+*.exe
+*.bin
+README.txt
