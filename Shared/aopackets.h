@@ -300,8 +300,7 @@ namespace AO {
     struct Bank                      // size 17
     {
         Header         header;
-        unsigned int   unknown1;      // 0x01000000 wtf?
-        char           unknown2[9];
+        char           unknown;
         unsigned int   mass;          // 1009*items+1009
     };
 
